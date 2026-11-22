@@ -2,8 +2,8 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY . .
+COPY app.py .
 
-RUN pip install pytest
+EXPOSE 8000
 
-CMD ["python", "-m", "pytest", "-v"]
+CMD ["python", "app.py"]
