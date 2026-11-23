@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Deployment Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">I</div>
+            <div>
+                <h2>InsureFlow</h2>
+                <span>Deployment Console</span>
+            </div>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a class="nav-item active" href="#">▦ Dashboard</a>
+            <a class="nav-item" href="#services">◈ Services</a>
+            <a class="nav-item" href="#deployment">⇧ Deployments</a>
+            <a class="nav-item" href="#activity">◷ Activity Logs</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="server-indicator">
+                <span class="pulse"></span>
+                <div>
+                    <strong>Server Online</strong>
+                    <small>AWS EC2 Instance</small>
+                </div>
+            </div>
+            <p>Insurance Demo Platform</p>
+            <small>Version 1.0.0</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Workspace / Overview</p>
+                <h1>Dashboard Overview</h1>
+            </div>
+
+            <div class="top-actions">
+                <span class="live-status"><span></span> Live System</span>
+                <div class="avatar">HD</div>
+            </div>
+        </header>
+
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">INSURANCE PLATFORM</p>
+                <h2>Welcome to your deployment dashboard.</h2>
+                <p>Monitor your application, infrastructure and deployment status in one place.</p>
+            </div>
+            <div class="welcome-icon">☁</div>
+        </section>
+
+        <section class="section-heading">
+            <div>
+                <h2>System Overview</h2>
+                <p>Current application and infrastructure status</p>
+            </div>
+            <button class="refresh-btn" onclick="refreshDashboard()">↻ Refresh</button>
+        </section>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Application Status</span>
+                    <span class="stat-icon blue">▣</span>
+                </div>
+                <h2 id="app-status">Operational</h2>
+                <p><span class="green-dot"></span> Application is running</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Server Status</span>
+                    <span class="stat-icon purple">☁</span>
+                </div>
+                <h2>Online</h2>
+                <p><span class="green-dot"></span> AWS EC2 connected</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Container Status</span>
+                    <span class="stat-icon orange">▤</span>
+                </div>
+                <h2>Running</h2>
+                <p><span class="green-dot"></span> Docker container active</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Application Port</span>
+                    <span class="stat-icon green">⇄</span>
+                </div>
+                <h2>80</h2>
+                <p>HTTP access enabled</p>
+            </div>
+
+        </section>
+
+        <section class="content-grid" id="deployment">
+
+            <div class="panel deployment-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Deployment Pipeline</h2>
+                        <p>Application delivery workflow</p>
+                    </div>
+                    <span class="success-badge">● Successful</span>
+                </div>
+
+                <div class="pipeline">
+
+                    <div class="pipeline-step">
+                        <div class="step-icon">✓</div>
+                        <div>
+                            <strong>Source Code</strong>
+                            <small>GitHub Repository</small>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-line"></div>
+
+                    <div class="pipeline-step">
+                        <div class="step-icon">✓</div>
+                        <div>
+                            <strong>Build & Test</strong>
+                            <small>GitHub Actions</small>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-line"></div>
+
+                    <div class="pipeline-step">
+                        <div class="step-icon">✓</div>
+                        <div>
+                            <strong>Docker Image</strong>
+                            <small>Docker Hub Registry</small>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-line"></div>
+
+                    <div class="pipeline-step">
+                        <div class="step-icon">✓</div>
+                        <div>
+                            <strong>Deployment</strong>
+                            <small>AWS EC2 Instance</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="deployment-footer">
+                    <span>Latest deployment</span>
+                    <strong>Successfully deployed</strong>
+                </div>
+            </div>
+
+            <div class="panel" id="services">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Infrastructure</h2>
+                        <p>Deployment environment details</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <div class="info-row">
+                        <span>Cloud Provider</span>
+                        <strong>AWS</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Compute Service</span>
+                        <strong>EC2</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Container Platform</span>
+                        <strong>Docker</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Region</span>
+                        <strong>ap-southeast-2</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Runtime</span>
+                        <strong>Python 3.11</strong>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="panel activity-panel" id="activity">
+            <div class="panel-heading">
+                <div>
+                    <h2>Recent Activity</h2>
+                    <p>Application deployment information</p>
+                </div>
+                <span class="activity-label">SYSTEM</span>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-check">✓</div>
+                <div>
+                    <strong>Application deployed successfully</strong>
+                    <p>Docker container is running on AWS EC2.</p>
+                </div>
+                <small>Latest</small>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-check">✓</div>
+                <div>
+                    <strong>Docker image published</strong>
+                    <p>Image pushed to Docker Hub registry.</p>
+                </div>
+                <small>Completed</small>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-check">✓</div>
+                <div>
+                    <strong>Automated tests passed</strong>
+                    <p>Application tests executed using pytest.</p>
+                </div>
+                <small>Completed</small>
+            </div>
+        </section>
+
+        <footer>
+            <span>InsureFlow Deployment Console</span>
+            <span>Built with Python · Docker · AWS</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
